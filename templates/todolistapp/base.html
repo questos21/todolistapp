@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TO-DO LIST</title>
+</head>
+<body>
+    <h2 style="text-align: center">TO-DO LIST</h2>
+{# success and error messages #}
+{% if messages %}
+    {# this will display my messages #}
+    {% for message in messages %}
+        <li style="color: {% if message.tags == 'success' %}green{% else %}red{% endif %}; ">
+            {{ message }}
+        </li>
+    {% endfor %}
+{% endif %}
+{% block content %}  {% endblock %}
+</body>
+</html>
