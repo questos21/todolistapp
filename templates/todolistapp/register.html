@@ -1,21 +1,30 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>TodoList Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'registerstyle.css' %}">
 </head>
 <body>
-<h2>Register</h2>
-{# collect user data #}
-<form enctype="multipart/form-data" method="post" action="{% url 'register' %}">
-    {% csrf_token %}
-    {% for field in form %}
-        <label>{{ field.label }}</label>
-        {{ field }}
-        <small>{{ field.errors }}</small>
+    <div class="container">
+        <h2 style="color: #218838">Register</h2>
+       <form enctype="multipart/form-data"
+      method="post" action="{% url 'register' %}">
+           {% csrf_token %}
+{#    this part loads appropriate form as in views#}
+     {% for field in form %}
+         <label> {{ field.label }} </label>
+         <br>
+         {{ field }}
+         <br>
+         <small>{{ field.errors }}</small>
+         <br>
     {% endfor %}
-    <button type="submit">Sign Up</button>
-</form>
-<p>Already have an account? <a href="{% url 'login' %} "></a></p>
+       <button type="submit" class="submit-btn">Sign Up</button>
+       <p id="messages">Already Registered <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
 </body>
 </html>
